@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>基于数据劫持双向绑定 | hishion blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/blog/img/favicon.ico">
+    <meta name="description" content="web front-end development engineer">
+    <meta name="title" content="hishion blog">
+    <meta name="keywords" content="小程序,Vue,uni-app,LESS/SCSS,Git">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/blog/assets/css/0.styles.2cf3aa08.css" as="style"><link rel="preload" href="/blog/assets/js/app.1d7c8bb7.js" as="script"><link rel="preload" href="/blog/assets/js/2.9776678b.js" as="script"><link rel="preload" href="/blog/assets/js/29.f792a0ad.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.63fef701.js"><link rel="prefetch" href="/blog/assets/js/11.fd712f50.js"><link rel="prefetch" href="/blog/assets/js/12.dcfd1d69.js"><link rel="prefetch" href="/blog/assets/js/13.7e5ab45e.js"><link rel="prefetch" href="/blog/assets/js/14.910987f3.js"><link rel="prefetch" href="/blog/assets/js/15.e48e163c.js"><link rel="prefetch" href="/blog/assets/js/16.77423360.js"><link rel="prefetch" href="/blog/assets/js/17.77449c6f.js"><link rel="prefetch" href="/blog/assets/js/18.ed990aa7.js"><link rel="prefetch" href="/blog/assets/js/19.69b89df5.js"><link rel="prefetch" href="/blog/assets/js/20.763cf1f5.js"><link rel="prefetch" href="/blog/assets/js/21.a2da5446.js"><link rel="prefetch" href="/blog/assets/js/22.7966a1c3.js"><link rel="prefetch" href="/blog/assets/js/23.92adc943.js"><link rel="prefetch" href="/blog/assets/js/24.7319ad27.js"><link rel="prefetch" href="/blog/assets/js/25.d2c4593d.js"><link rel="prefetch" href="/blog/assets/js/26.dd42856d.js"><link rel="prefetch" href="/blog/assets/js/27.9eab2d0d.js"><link rel="prefetch" href="/blog/assets/js/28.481c5924.js"><link rel="prefetch" href="/blog/assets/js/3.6e87f6b4.js"><link rel="prefetch" href="/blog/assets/js/30.8e32e01d.js"><link rel="prefetch" href="/blog/assets/js/31.be8d622b.js"><link rel="prefetch" href="/blog/assets/js/32.4f4e33b7.js"><link rel="prefetch" href="/blog/assets/js/33.05b55381.js"><link rel="prefetch" href="/blog/assets/js/34.bff78c55.js"><link rel="prefetch" href="/blog/assets/js/35.0536bd8d.js"><link rel="prefetch" href="/blog/assets/js/36.1f4faf41.js"><link rel="prefetch" href="/blog/assets/js/37.d107c07d.js"><link rel="prefetch" href="/blog/assets/js/38.70eaf222.js"><link rel="prefetch" href="/blog/assets/js/39.352e7bed.js"><link rel="prefetch" href="/blog/assets/js/4.b6b0703c.js"><link rel="prefetch" href="/blog/assets/js/40.2fe1b37a.js"><link rel="prefetch" href="/blog/assets/js/41.344ac7a0.js"><link rel="prefetch" href="/blog/assets/js/42.ed4f127e.js"><link rel="prefetch" href="/blog/assets/js/43.76e45d59.js"><link rel="prefetch" href="/blog/assets/js/44.4c42d6d3.js"><link rel="prefetch" href="/blog/assets/js/45.4ac7da24.js"><link rel="prefetch" href="/blog/assets/js/46.2e7d2db6.js"><link rel="prefetch" href="/blog/assets/js/47.7fc02d85.js"><link rel="prefetch" href="/blog/assets/js/48.5fa05cd4.js"><link rel="prefetch" href="/blog/assets/js/49.b0d94fc4.js"><link rel="prefetch" href="/blog/assets/js/5.8de688f6.js"><link rel="prefetch" href="/blog/assets/js/50.e1285460.js"><link rel="prefetch" href="/blog/assets/js/51.8b630835.js"><link rel="prefetch" href="/blog/assets/js/52.0ada3982.js"><link rel="prefetch" href="/blog/assets/js/53.a173fc23.js"><link rel="prefetch" href="/blog/assets/js/54.d8dc790f.js"><link rel="prefetch" href="/blog/assets/js/55.1b542400.js"><link rel="prefetch" href="/blog/assets/js/56.c3a95ca7.js"><link rel="prefetch" href="/blog/assets/js/57.78c24690.js"><link rel="prefetch" href="/blog/assets/js/58.7b514219.js"><link rel="prefetch" href="/blog/assets/js/59.db950769.js"><link rel="prefetch" href="/blog/assets/js/6.c312e70f.js"><link rel="prefetch" href="/blog/assets/js/60.1b36a275.js"><link rel="prefetch" href="/blog/assets/js/61.01aa5d4f.js"><link rel="prefetch" href="/blog/assets/js/62.0aae1b57.js"><link rel="prefetch" href="/blog/assets/js/63.f7c3a548.js"><link rel="prefetch" href="/blog/assets/js/64.1e581c0b.js"><link rel="prefetch" href="/blog/assets/js/65.17832778.js"><link rel="prefetch" href="/blog/assets/js/66.1aec0f60.js"><link rel="prefetch" href="/blog/assets/js/7.ef7d0e9b.js"><link rel="prefetch" href="/blog/assets/js/8.1e280b50.js"><link rel="prefetch" href="/blog/assets/js/9.945ed5a7.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.2cf3aa08.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">hishion blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章" class="dropdown-title"><span class="title">文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/basic/" class="nav-link">
+  JS基础
+</a></li><li class="dropdown-item"><!----> <a href="/blog/mp/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/uni/life.html" class="nav-link">
+  uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/blog/scss/" class="nav-link">
+  SCSS/LESS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/standard/" class="nav-link">
+  前端编码规范
+</a></li><li class="dropdown-item"><!----> <a href="/blog/tool/" class="nav-link">
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/blog/http/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/blog/graphql/" class="nav-link">
+  GraphQL
+</a></li><li class="dropdown-item"><!----> <a href="/blog/driving/" class="nav-link">
+  其他
+</a></li></ul></div></div><div class="nav-item"><a href="https://gitee.com/hishion.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/weixisheng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章" class="dropdown-title"><span class="title">文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/basic/" class="nav-link">
+  JS基础
+</a></li><li class="dropdown-item"><!----> <a href="/blog/mp/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/uni/life.html" class="nav-link">
+  uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/blog/scss/" class="nav-link">
+  SCSS/LESS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/standard/" class="nav-link">
+  前端编码规范
+</a></li><li class="dropdown-item"><!----> <a href="/blog/tool/" class="nav-link">
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/blog/http/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/blog/graphql/" class="nav-link">
+  GraphQL
+</a></li><li class="dropdown-item"><!----> <a href="/blog/driving/" class="nav-link">
+  其他
+</a></li></ul></div></div><div class="nav-item"><a href="https://gitee.com/hishion.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/weixisheng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>js基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>小程序</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Vue</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/vue/" aria-current="page" class="active sidebar-link">Vue原理解析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/vue/#基于数据劫持双向绑定" class="sidebar-link">基于数据劫持双向绑定</a></li><li class="sidebar-sub-header"><a href="/blog/vue/#computed工作流程" class="sidebar-link">computed工作流程</a></li><li class="sidebar-sub-header"><a href="/blog/vue/#watch原理" class="sidebar-link">watch原理</a></li></ul></li><li><a href="/blog/vue/guide.html" class="sidebar-link">Vue规范指南</a></li><li><a href="/blog/vue/auto.html" class="sidebar-link">自动加载文件</a></li><li><a href="/blog/vue/slot.html" class="sidebar-link">Vue插槽</a></li><li><a href="/blog/vue/optimizing.html" class="sidebar-link">Vue优化</a></li><li><a href="/blog/vue/table.html" class="sidebar-link">Vue Element table二次封装</a></li><li><a href="/blog/vue/swiper.html" class="sidebar-link">卡片式轮播图之后台实现</a></li><li><a href="/blog/vue/eslint.html" class="sidebar-link">Vue项目配置eslint</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>SCSS/LESS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Git知识</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端规范</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>GraphQL</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络知识</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="基于数据劫持双向绑定"><a href="#基于数据劫持双向绑定" class="header-anchor">#</a> 基于数据劫持双向绑定</h2> <ul><li>利用<code>Proxy</code>或<code>Object.defineProperty</code>生成的<code>Observer</code>对对象、对象属性进行劫持，在属性变化后通知订阅者<code>Watcher</code></li> <li>解析器<code>Compiler</code>解析模板中的指令，收集指令需要的数据和方法，等待数据变化时重新渲染</li> <li><code>Watcher</code>连接<code>Observer</code>和<code>Watcher</code>，接收<code>Observer</code>产生的数据变化，并根据<code>Compiler</code>提供的指令进行视图渲染，促使视图变化
+<img src="/blog/assets/img/Vue-1.3437ac81.jpg" alt="Vue 双向绑定思路"></li></ul> <p>Vue 3开始使用<code>Proxy</code>实现双向绑定，因为<code>Object.defineProperty</code>有如下缺点：</p> <ol><li>不能实现数组和对象的部分监听情况。无法监听数组下标的变化，导致Vue实现数组变异方法来解决问题。无法监听属性的新增删除操作，需要<code>Vue.set</code>。</li> <li>需要遍历所有的属性，如果 vue 对象的 <code>data/computed/props</code> 数据多，遍历自然会慢很多。
+那么 <code>Object.defineProperty</code> 需要监听所有的属性的变化，占用内存相应就大了。</li></ol> <p>Proxy直接拦截/代理对象，不需深度遍历属性，而且支持监听数组变化。</p> <h2 id="computed工作流程"><a href="#computed工作流程" class="header-anchor">#</a> computed工作流程</h2> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">reversedMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>message<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ol><li><code>data</code> 属性初始化 <code>getter</code> <code>setter</code></li> <li><code>computed</code> 计算属性初始化，提供的函数将用作属性 <code>vm.reversedMessage</code> 的 <code>getter</code></li> <li>当首次获取 <code>reversedMessage</code> 计算属性的值时，<code>Dep</code> 开始依赖收集</li> <li>在执行 <code>message</code> <code>getter</code> 方法时，如果 <code>Dep</code> 处于依赖收集状态，则判定 <code>message</code> 为 <code>reversedMessage</code> 的依赖，并建立依赖关系</li> <li>当 <code>message</code> 发生变化时，根据依赖关系，触发 <code>reversedMessage</code> 的重新计算</li></ol> <h2 id="watch原理"><a href="#watch原理" class="header-anchor">#</a> watch原理</h2> <p><code>watch</code> 监听实现利用遍历获取属性，触发“数据劫持get”逐个收集依赖，这样做的好处是其上级的属性发生修改也能执行回调。</p> <p>与 <code>data</code> 和 <code>computed</code> 不同，<strong><code>watch</code> 收集依赖的流程是发生在页面渲染之前</strong>，而前两者是在页面渲染时进行取值才会收集依赖。</p> <p><code>computed</code> 和 <code>watch</code> 的异同：</p> <ol><li><code>computed</code> 要依赖 <code>data</code> 上的属性变化返回一个值，watch 则是观察数据触发回调；</li> <li><code>computed</code> 和 <code>watch</code> 依赖收集的发生点不同；</li> <li><code>computed</code> 的更新需要“渲染Watcher”的辅助，watch 不需要。</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/uni/custom-service.html" class="prev">
+        拖拽客服组件
+      </a></span> <span class="next"><a href="/blog/vue/guide.html">
+        Vue规范指南
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/blog/assets/js/app.1d7c8bb7.js" defer></script><script src="/blog/assets/js/2.9776678b.js" defer></script><script src="/blog/assets/js/29.f792a0ad.js" defer></script>
+  </body>
+</html>
